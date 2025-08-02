@@ -1,32 +1,97 @@
+/* Use border-box for easier sizing */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%; /* usually 16px */
+}
+
 body {
-  background-color: rgb(235, 235, 235);;
+  margin: 0;
+  background-color: #ebebeb;
   font-family: 'Trebuchet MS', Arial, sans-serif;
-  margin: 0px;
+  font-size: 1rem; /* Base font size */
 }
 
-.recipes {
-  margin: 0px;
-  margin: 0px;
-  border: 2px solid black;
-  display: flex;
-  justify-content:space-between;
-}
-
-.link {
-  border: 2px solid red;
-  flex: 1;
-  text-align: center;
-}
-
-a {
-  color: rgb(207, 48, 0);
-  font-size: 20px;
-}
-
+/* Page header */
 .header {
   text-align: center;
   color: #ffffff;
-  background: #383838;
+  background-color: #383838;
+  padding: 1rem 0;
   margin: 0;
-  padding: 15px;
+}
+
+/* Container for recipe links */
+.recipes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 1.5rem;
+  margin: 2rem;
+}
+
+/* Individual link boxes */
+.link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20rem;
+  height: 14rem;
+  background-color: #d9d9d9;
+  border-radius: 2rem;
+  text-align: center;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+
+    /* Shared background styles for images */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.link.burger {
+  background-image: url("recipes/images/beef_burger.jpg");
+}
+
+.link.parma {
+  background-image: url("recipes/images/chicken_parma.jpg");
+}
+
+.link.pasta {
+  background-image: url("recipes/images/vodka_pasta.jpg");
+}
+
+/* Overlay using ::before */
+.link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 2rem;
+  transition: background-color 0.3s ease;
+  z-index: 1;
+}
+
+.link:hover::before {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Styling the link itself */
+.link a {
+  position: relative;
+  z-index: 2;
+  color: #d7d7d7;
+  font-size: 1.25rem;
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+.link:hover a {
+  color: #ffffff;
 }
